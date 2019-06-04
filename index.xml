@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://github.com/sky-walker-dave/myblog.git/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Jun 2019 10:30:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://github.com/sky-walker-dave/myblog.git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog20190604</title>
+      <link>https://github.com/sky-walker-dave/myblog.git/post/blog20190604/</link>
+      <pubDate>Tue, 04 Jun 2019 10:30:25 +0800</pubDate>
+      
+      <guid>https://github.com/sky-walker-dave/myblog.git/post/blog20190604/</guid>
+      <description>git log 查看提交历史 ``` lenovo@Dave-own MINGW32 /g/code/farm (master) $ git log
+commit a8b6e2ba8a2869418018f885fa6c8642387c1731 Author: Dave dongruifang@efy-tech.com Date: Tue Jun 5 20:34:36 2018 +0800
+update interface: get uav nearby 200 miles commit a6a85307a13d7e71a6b62080bff8152de1925a5a #`commit id`（版本号），是一个SHA1计算出来的一个非常大 的数字，用十六进制表示 Author: Dave &amp;lt;dongruifang@efy-tech.com&amp;gt; Date: Tue Jun 5 19:52:46 2018 +0800 1.add interface: appSecret verify 2.user-Detail update commit 39e7276cebaddbcf9d66929f6917c971ad09be04 Author: Dave &amp;lt;dongruifang@efy-tech.com&amp;gt; Date: Mon Jun 4 10:10:53 2018 +0800 获取返航路径接口调整 ``` 另外， ``` git log --graph # 命令可以看到分支合并图 ``` 版本回退 ===== ``` $ git reset --hard HEAD^ # `HEAD`指向的是当前版本 HEAD is now at a6a85307 1.</description>
+    </item>
+    
+  </channel>
+</rss>

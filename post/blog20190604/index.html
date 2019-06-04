@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Blog20190604 &middot;  My New Hugo Site" />
+  	<meta property="og:site_name" content="My New Hugo Site" />
+  	<meta property="og:url" content="https://github.com/sky-walker-dave/myblog.git/post/blog20190604/" />
+    
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2019-06-04T10:30:25&#43;08:00" />
+
+    
+    
+
+  <title>
+     Blog20190604 &middot;  My New Hugo Site
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://github.com/sky-walker-dave/myblog.gitimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://github.com/sky-walker-dave/myblog.gitimages/apple-touch-icon.png" />
+    
+    <link rel="stylesheet" type="text/css" href="https://github.com/sky-walker-dave/myblog.gitcss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="https://github.com/sky-walker-dave/myblog.gitindex.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.55.6" />
+
+    <link rel="canonical" href="https://github.com/sky-walker-dave/myblog.git/post/blog20190604/" />
+
+     
+</head>
+<body class="nav-closed">
+<div id="particles-js"></div>
+  
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header " style="background-image: url(https://github.com/sky-walker-dave/myblog.git)">
+
+    <nav class="main-nav overlay clearfix">
+        
+        
+    </nav>
+<div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">
+              <a class="btn-bootstrap-2" href="#content">My New Hugo Site</a>
+          </h1>
+          <h2 class="page-description"></h2>
+        </div>
+</div>
+    <a class="scroll-down icon-arrow-left" href="#content"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  <main id="content" class="content" role="main">
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Blog20190604</h1>
+        <section class="post-meta">
+        
+	<time class="post-date" datetime="2019-06-04">
+            2019-06-04
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="git-log-查看提交历史">git log 查看提交历史</h1>
+
+<p>```
+lenovo@Dave-own MINGW32 /g/code/farm (master)
+$ git log<br />
+commit a8b6e2ba8a2869418018f885fa6c8642387c1731
+Author: Dave <a href="mailto:dongruifang@efy-tech.com">dongruifang@efy-tech.com</a>
+Date:   Tue Jun 5 20:34:36 2018 +0800</p>
+
+<pre><code>update interface: get uav nearby 200 miles
+
+commit a6a85307a13d7e71a6b62080bff8152de1925a5a  #`commit id`（版本号），是一个SHA1计算出来的一个非常大            
+                                                   的数字，用十六进制表示
+                                               Author: Dave &lt;dongruifang@efy-tech.com&gt;
+                                               Date:   Tue Jun 5 19:52:46 2018 +0800
+
+                                                   1.add interface: appSecret verify  2.user-Detail  update
+
+                                                   commit 39e7276cebaddbcf9d66929f6917c971ad09be04
+                                                   Author: Dave &lt;dongruifang@efy-tech.com&gt;
+                                                   Date:   Mon Jun 4 10:10:53 2018 +0800
+
+                                                       获取返航路径接口调整
+                                                   ```
+                                                   另外，
+                                                   ```
+                                                    git log --graph   # 命令可以看到分支合并图
+                                                    ```
+                                                    版本回退
+                                                    =====
+                                                    ```
+                                                    $ git reset --hard HEAD^  # `HEAD`指向的是当前版本
+                                                    HEAD is now at a6a85307 1.add interface: appSecret verify  2.user-Detail  update
+                                                    ```
+                                                    回退之后再执行git log就会发现最新的版本信息没有了，此时若想再前往*未来*，则可以通过指定的版本id去执行：
+                                                    ```
+                                                    $ git reset --hard a8b6e2b
+                                                    HEAD is now at 83b0afe append GPL
+                                                    ```
+                                                    执行上面操作的前提是知道要前往的版本id，若前面的操作界面已经关掉，则需要想办法找到相应的版本id:
+                                                    ```
+                                                    $ git reflog  # 记录每次的执行命令
+                                                    a8b6e2 HEAD@{1}: reset: moving to HEAD^
+                                                    ```
+                                                    拿到版本id之后再前往对应的版本。
+
+                                                    Working-Directory  &amp;  Repository
+                                                    ==================
+                                                    工作区（Working Directory），就是你在电脑里能看到的目录，比如farm项目目录文件夹。
+                                                    版本库（Repository），工作区有一个隐藏目录`.git`，这个不算工作区，而是Git的版本库。
+                                                    ```
+                                                    .git里存了很多东西，其中最重要的是被称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支`master`，以及指向`master`的指针`HEAD`。
+                                                        git add . 实际上就是把文件修改添加到暂存区
+                                                            git commit  实际上就是把暂存区的所有内容提交到当前分支
+
+                                                                git diff HEAD -- readme.txt  可以查看工作区和版本库里面最新版本的区别
+                                                                    git checkout -- readme.txt  把`readme.txt`文件在工作区的修改全部撤销
+                                                                    ```
+                                                                     删除文件
+                                                                     ======
+                                                                     当你在文件管理器中把没用的文件删了，或者用`rm -f`命令删了，这个时候，使用`git status`命令会立刻告诉你哪些文件被删除了，工作区和版本库目前不一致了，这时有两个操作可以选择：
+                                                                     ```
+                                                                        1. 确实要从版本库中删除该文件，那就用命令`git rm`删掉，并且`git commit`
+                                                                            2. 另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：
+                                                                                $ git checkout -- test.txt  #用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都“一键还原”
+                                                                                ```
+                                                                                 添加远程库
+                                                                                 =======
+                                                                                 ```
+                                                                                 git remote add origin efygit@efygit:~/gitrepo/farm.git  # origin，远程库的名字
+                                                                                 $ git push -u origin master   # 第一次推送`master`分支时，加上了`-u`参数，Git不但会把本地的`master`分支内           
+                                                                                                                容推送的远程新的`master`分支，还会把本地的`master`分支和远程的`master`分
+                                                                                                                                                支关联起来，在以后的推送或者拉取时就可以简化命令。
+                                                                                                                                                ```
+                                                                                                                                                分支管理
+                                                                                                                                                =====
+                                                                                                                                                ** 创建与合并分支**
+                                                                                                                                                ```
+                                                                                                                                                $ git checkout -b dev   # 创建并切换分支
+                                                                                                                                                ```
+                                                                                                                                                ** Bug分支**
+                                                                                                                                                当你接到一个修复一个代号101的bug的任务时，很自然地，你想创建一个分支`issue-101`来修复它，该分支应该打在master上，但是若现在dev分支上有正在进行的工作，不能切换到master上，该怎么办。。。
+                                                                                                                                                Git还提供了一个*stash*功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
+                                                                                                                                                ```
+                                                                                                                                                $ git stash
+                                                                                                                                                Saved working directory and index state WIP on dev: f52c633 add 
+                                                                                                                                                ```
+                                                                                                                                                然后就可以checkout到master上进行bug分支的创建了，等bug修复完成后再切换回dev上：
+                                                                                                                                                ```
+                                                                                                                                                $ git stash list   #  查看分支上的stash列表
+                                                                                                                                                stash@{0}: WIP on dev: f52c633 add merge
+
+                                                                                                                                                恢复stash方式一、
+                                                                                                                                                $ git stash apply， 恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除
+                                                                                                                                                恢复stash方式二、
+                                                                                                                                                $ git stash pop，恢复的同时把stash内容也删了
+
+                                                                                                                                                也可以多次stash，恢复的时候，先用`git stash list`查看，然后恢复指定的stash，用命令：
+                                                                                                                                                $ git stash apply stash@{0}
+                                                                                                                                                ```
+                                                                                                                                                **Feature分支**
+                                                                                                                                                每添加一个新功能，最好新建一个feature分支后在上面开发，完成后进行合并。
+                                                                                                                                                ** 多人协作**
+                                                                                                                                                要查看远程库的信息，用`git remote` 或者git remote -v：
+                                                                                                                                                ```
+                                                                                                                                                $ git remote
+                                                                                                                                                origin
+
+                                                                                                                                                $ git remote -v  # 显示更详细信息
+                                                                                                                                                origin  git@github.com:michaelliao/learngit.git (fetch)
+                                                                                                                                                origin  git@github.com:michaelliao/learngit.git (push)
+                                                                                                                                                ```
+                                                                                                                                                并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？
+                                                                                                                                                ```
+                                                                                                                                                    master 分支是主分支，因此要时刻与远程同步
+                                                                                                                                                        dev 分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步
+                                                                                                                                                            bug 分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug
+                                                                                                                                                                feature 分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发
+                                                                                                                                                                ```
+                                                                                                                                                                当你的小伙伴从远程库clone时，默认情况下，只能看到本地的`master`分支，如果要在`dev`分支上开发，就必须创建远程`origin`的`dev`分支到本地，于是他用这个命令创建本地`dev`分支：
+
+                                                                                                                                                                ```
+                                                                                                                                                                $ git checkout -b dev origin/dev
+                                                                                                                                                                ```
+                                                                                                                                                                多人开发过程中，会出现向同一分支push代码时出现冲突，这就需要先pull，此时可能会失败（提示`no tracking information`），原因是没有指定本地`dev`分支与远程`origin/dev`分支的链接，根据提示，设置`dev`和`origin/dev`的链接：
+                                                                                                                                                                ```
+                                                                                                                                                                $ git branch --set-upstream-to=origin/dev dev
+                                                                                                                                                                Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+                                                                                                                                                                ```
+                                                                                                                                                                然后再pull，在本地解决代码冲突之后再推送。
+
+                                                                                                                                                                **Rebase**
+                                                                                                                                                                使用rebase可以把分叉的提交历史“整理”成一条直线，看上去更直观（目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比）。缺点是本地的分叉提交已经被修改过了。
+
+                                                                                                                                                                **标签管理**
+                                                                                                                                                                ```
+                                                                                                                                                                $ git tag v1.0  # 在分支上创建标签
+                                                                                                                                                                $ git tag  #  查看所有标签
+                                                                                                                                                                v1.0
+                                                                                                                                                                ```
+                                                                                                                                                                标签默认是打在最新提交的commit上的，但如果忘了打标签，则需要找到历史提交的commit id，然后打上就可以了：
+                                                                                                                                                                ```
+                                                                                                                                                                $ git log --pretty=oneline -bbrev-commit
+                                                                                                                                                                12a631b (HEAD -&gt; master, tag: v1.0, origin/master) merged bug fix 101
+                                                                                                                                                                4c805e2 fix bug 101
+                                                                                                                                                                e1e9c68 merge with no-ff
+                                                                                                                                                                f52c633 add merge
+                                                                                                                                                                cf810e4 conflict fixed
+                                                                                                                                                                5dc6824 &amp; simple
+                                                                                                                                                                14096d0 AND simple
+                                                                                                                                                                b17d20e branch test
+                                                                                                                                                                d46f35e remove test.txt
+                                                                                                                                                                b84166e add test.txt
+                                                                                                                                                                519219b git tracks changes
+                                                                                                                                                                e43a48b understand how stage works
+                                                                                                                                                                1094adb append GPL
+                                                                                                                                                                e475afc add distributed
+                                                                                                                                                                eaadf4e wrote a readme file
+                                                                                                                                                                ```
+                                                                                                                                                                比方说要对`add merge`这次提交打标签，它对应的commit id是`f52c633`，敲入命令：
+                                                                                                                                                                ```
+                                                                                                                                                                $ git tag v0.9 f52c633
+                                                                                                                                                                ```
+                                                                                                                                                                注意，标签不是按时间顺序列出，而是按字母排序的。可以用`git show &lt;tagname&gt;`查看标签信息：
+
+                                                                                                                                                                git add . &amp;  git add -u  &amp;  git add -A区别
+                                                                                                                                                                =========================
+                                                                                                                                                                1.  git add . ：监控工作区的状态树，使用它会把工作时的所有变化提交到暂存区，*包括文件内容修改(modified)以及新文件(new)*，但**不包括被除的文件**。
+                                                                                                                                                                2. git add -u ：仅监控*已经被add的文件*（即tracked file），他会*将被修改的文件*提交到暂存区。add -u 不会提交新文件（untracked file）。（git add --update的缩写）
+                                                                                                                                                                3. git add -A ：是上面两个功能的**合集**（git add --all的缩写）
+
+                                                                                                                                                                搭建git服务器
+                                                                                                                                                                ========
+                                                                                                                                                                GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。
+                                                                                                                                                                搭建Git服务器需要准备一台运行Linux的机器，强烈推荐用Ubuntu或Debian，这样，通过几条简单的`apt`命令就可以完成安装。
+                                                                                                                                                                假设你已经有`sudo`权限的用户账号，下面，正式开始安装。
+                                                                                                                                                                第一步，安装`git`：
+                                                                                                                                                                ```
+                                                                                                                                                                $ sudo apt-get install git
+                                                                                                                                                                ```
+                                                                                                                                                                第二步，创建一个`git`用户，用来运行`git`服务：
+                                                                                                                                                                ```
+                                                                                                                                                                $ sudo adduser git
+                                                                                                                                                                ```
+                                                                                                                                                                第三步，创建证书登录：
+                                                                                                                                                                收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里，一行一个。
+                                                                                                                                                                第四步，初始化Git仓库：
+                                                                                                                                                                先选定一个目录作为Git仓库，假定是`/srv/sample.git`，在`/srv`目录下输入命令：
+                                                                                                                                                                ```
+                                                                                                                                                                $ sudo git init --bare sample.git
+                                                                                                                                                                ```
+                                                                                                                                                                Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以`.git`结尾。然后，把owner改为`git`：
+                                                                                                                                                                ```
+                                                                                                                                                                $ sudo chown -R git:git sample.git
+                                                                                                                                                                ```
+                                                                                                                                                                第五步，禁用shell登录：
+                                                                                                                                                                出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：
+                                                                                                                                                                ```
+                                                                                                                                                                git:x:1001:1001:,,,:/home/git:/bin/bash
+                                                                                                                                                                ```
+                                                                                                                                                                改为：
+                                                                                                                                                                ```
+                                                                                                                                                                git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+                                                                                                                                                                ```
+                                                                                                                                                                这样，`git`用户可以正常通过ssh使用git，但无法登录shell，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出。
+                                                                                                                                                                第六步，克隆远程仓库：
+                                                                                                                                                                现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：
+                                                                                                                                                                ```
+                                                                                                                                                                $ git clone git@server:/srv/sample.git
+                                                                                                                                                                Cloning into 'sample'...
+                                                                                                                                                                warning: You appear to have cloned an empty repository.
+                                                                                                                                                                ```
+                                                                                                                                                                剩下的推送就简单了。
+                                                                                                                                                                ### 管理公钥
+                                                                                                                                                                如果团队很小，把每个人的公钥收集起来放到服务器的`/home/git/.ssh/authorized_keys`文件里就是可行的。如果团队有几百号人，就没法这么玩了，这时，可以用[Gitosis](https://github.com/res0nat0r/gitosis)来管理公钥。
+
+                                                                                                                                                                这里我们不介绍怎么玩[Gitosis](https://github.com/res0nat0r/gitosis)了，几百号人的团队基本都在500强了，相信找个高水平的Linux管理员问题不大。
+
+                                                                                                                                                                ### 管理权限
+                                                                                                                                                                有很多不但视源代码如生命，而且视员工为窃贼的公司，会在版本控制系统里设置一套完善的权限控制，每个人是否有读写权限会精确到每个分支甚至每个目录下。因为Git是为Linux源代码托管而开发的，所以Git也继承了开源社区的精神，不支持权限控制。不过，因为Git支持钩子（hook），所以，可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。[Gitolite](https://github.com/sitaramc/gitolite)就是这个工具。
+                                                                                                                                                                这里我们也不介绍[Gitolite](https://github.com/sitaramc/gitolite)了，不要把有限的生命浪费到权限斗争中。
+
+                                                                                                                                                                ### 小结
+                                                                                                                                                                *   搭建
+                                                                                                                                                                服务器非常简单，通常10分钟即可完成；
+                                                                                                                                                                *   要方便管理公钥，用[Gitosis](https://github.com/sitaramc/gitolite)；
+                                                                                                                                                                *   要像SVN那样变态地控制权限，用[Gitolite](https://github.com/sitaramc/gitolite)。
+
+                                                                                                                                                                ### 附录
+                                                                                                                                                                *  删除远程分支：git push origin --delete Chapater6   可以删除远程分支Chapater6
+                                                                                                                                                                *  关联远程repository ：git remote add origin efygit@efygit:~/gitrepo/jdtransfer.git
+                                                                                                                                                                *  取消本地目录下关联的远程库：git remote remove origin
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    <section class="author">
+
+</section>
+
+
+    
+    <section class="share">
+      <h4>Share this post</h4>
+      <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Blog20190604&amp;url=https%3a%2f%2fgithub.com%2fsky-walker-dave%2fmyblog.git%2fpost%2fblog20190604%2f"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+      </a>
+      <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgithub.com%2fsky-walker-dave%2fmyblog.git%2fpost%2fblog20190604%2f"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+      </a>
+      <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fgithub.com%2fsky-walker-dave%2fmyblog.git%2fpost%2fblog20190604%2f"
+         onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+      </a>
+    </section>
+    
+
+    
+    
+    
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">My New Hugo Site</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="https://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/syui/hugo-theme-air">hugo-theme-air</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://github.com/sky-walker-dave/myblog.gitjs/jquery.js"></script>
+    <script type="text/javascript" src="https://github.com/sky-walker-dave/myblog.gitjs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://github.com/sky-walker-dave/myblog.gitjs/index.js"></script>
+    <script src="https://github.com/sky-walker-dave/myblog.gitjs/particles.min.js"></script>
+    <script src="https://github.com/sky-walker-dave/myblog.gitjs/particles.js"></script>  
+
+</body>
+</html>
+
