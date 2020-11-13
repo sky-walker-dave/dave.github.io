@@ -1,1 +1,3 @@
 baseurl: /myblog
+
+theme: jekyll-theme-cayman
